@@ -17,13 +17,14 @@ class DataEncrypt
      */
     public function handle(Request $request, Closure $next)
     {
-        $response = $next($request);
-        $orgn_data = $response->getData();
-
-        $en_data = Encrypt::encrypt2($orgn_data->response);
-
-        $orgn_data->response = $en_data;
-
-        return $orgn_data;
+        if ($next($request)->getStatusCode() === 422) {
+            return $next($request);
+        } else {
+            $response = $next($request);
+            $orgn_data = $response->getData();
+            $en_data = Encrypt::encrypt2($orgn_data->response);
+            $orgn_data->response = $en_data;
+            return $orgn_data;
+        }
     }
 }
