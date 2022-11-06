@@ -45,10 +45,7 @@ class CreateModule extends Command
         exec('php artisan make:request ApiRequests/Store"' . $name . '"ApiRequest');
         exec('php artisan make:request ApiRequests/Update"' . $name . '"ApiRequest');
         exec('mkdir resources\views\admin\"' . $name . '"');
-        exec('echo @extends("layouts.admin") @section("content") @endsection > resources/views/admin/"' . $name . '"/index.blade.php');
-        exec('echo @extends("layouts.admin") @section("content") @endsection > resources/views/admin/"' . $name . '"/show.blade.php');
-        exec('echo @extends("layouts.admin") @section("content") @endsection > resources/views/admin/"' . $name . '"/edit.blade.php');
-        exec('echo @extends("layouts.admin") @section("content") @endsection > resources/views/admin/"' . $name . '"/create.blade.php');
+        exec('copy .\public\SampleFile\*.* .\resources\views\admin\"' . $name . '"');
 
         $this->info('The Module Create Successful!');
     }

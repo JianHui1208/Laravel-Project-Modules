@@ -84,6 +84,18 @@ When you type the command, you will get the following list:
 
 <hr>
 
+## Postman API Documentation
+
+<a href="https://documenter.getpostman.com/view/15219123/Uz5CLHv9">Link</a>
+
+---
+
+## Remark
+
+In the Layout File, You can use the Ctrl+F and search Keyword <b>"Name"</b>, you can change to the module name.
+
+---
+
 ## License
 
 `Laravel Project Modules` is licensed under [The MIT License (MIT)](License.md).
