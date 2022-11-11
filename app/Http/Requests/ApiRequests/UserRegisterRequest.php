@@ -34,10 +34,10 @@ class UserRegisterRequest extends BaseClientApiRequest
                 'required',
                 'unique:users',
             ],
-            'name' => [
-                'string',
-                'required',
-            ],
+            // 'name' => [
+            //     'string',
+            //     'required',
+            // ],
             'email' => [
                 'required',
                 'unique:users',
@@ -45,13 +45,13 @@ class UserRegisterRequest extends BaseClientApiRequest
             'password' => [
                 'required',
             ],
-            'pin' => [
-                'integer',
-            ],
-            'type' => [
-                'integer',
-                'required'
-            ],
+            // 'pin' => [
+            //     'integer',
+            // ],
+            // 'type' => [
+            //     'integer',
+            //     'required'
+            // ],
         ];
     }
 }

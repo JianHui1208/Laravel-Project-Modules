@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Users;
 
 use App\Http\Controllers\BaseController;
+use App\Exceptions\ClientApiValidationException;
 use App\Http\Requests\ApiRequests\UserRegisterRequest;
 use App\Http\Requests\ApiRequests\UserLoginRequest;
 use Illuminate\Support\Facades\Log;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
+use PhpParser\Node\Stmt\TryCatch;
 
 class UsersApiController extends BaseController
 {
@@ -69,15 +71,15 @@ class UsersApiController extends BaseController
         //
     }
 
-    public function register(Request $request)
+    public function register(UserRegisterRequest $request)
     {
-        return $request->all();
         DB::beginTransaction();
         try {
             $request['uid'] = $this->generateUID('users');
             $request['is_active'] = 1;
             $request['decrypt_key'] = $this->generateKey();
             $request['encrypt_key'] = $this->generateKey();
+            $request['type'] = 2;
             $user = User::create($request->all());
             $user->roles()->sync(2);
 

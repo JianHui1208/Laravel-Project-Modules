@@ -27,7 +27,8 @@ class DataDecrypt
             return response()->json(['status' => 9999, 'msg' => 'Data Decrypt Error']);
         }
 
-        $request['data'] = $orgn_data;
+        $request->merge((array)$orgn_data);
+        unset($request['data']);
 
         return $next($request);
     }
